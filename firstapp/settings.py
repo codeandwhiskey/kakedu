@@ -123,6 +123,6 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    ("static", "/home/vitaliy/PycharmProjects/firstapp/static"),
+    ("static", "static"),
 ]
 
