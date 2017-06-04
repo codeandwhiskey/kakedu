@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/bootstrap.css" %}">
+    <title>Blog</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+{#    <div class="navbar-header">#}
+{#      <a class="navbar-brand" href="#">WebSiteName</a>#}
+{#    </div>#}
+{#    <ul class="nav navbar-nav">#}
+{#      <li class="active"><a href="#">Home</a></li>#}
+{#      <li><a href="#">Page 1</a></li>#}
+{#      <li><a href="#">Page 2</a></li>#}
+{#    </ul>#}
+    <ul class="nav navbar-nav navbar-right">
+        {% if username %}
+            <li><a href="/auth/logout/"><span class="glyphicon glyphicon-user"></span> Sign out({{ username }})</a></li>
+        {% else %}
+          <li><a href="/auth/register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="/auth/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+<div class="container">
+    <h1><a href="/">My blog</a></h1>
+    <div class="row">
+        {% block article %}{% endblock %}
+        {% block login %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

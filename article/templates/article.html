@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block article %}
+<h4>{{ article.article_date }}</h4>
+<h2>{{ article.article_title }}</h2>
+<p>{{ article.article_text }}</p>
+<hr>
+    <div class="col-lg-offset-1">
+        <p>Comments</p>
+        {% for comment in comments %}
+            <p>{{ comment.comments_text }}</p>
+        {% endfor %}
+    </div>
+    {% if username %}
+    <div>
+        <form action="/articles/addcomment/{{ article.id }}/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="button" value="Add comment">
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

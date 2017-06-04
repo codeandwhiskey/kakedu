@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block login %}
+    <div class="col-md-3">
+    <form class="form-horizontal" action="/auth/register/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="button" type="submit" value="Register">
+    </form>
+    </div>
+{% endblock %}
